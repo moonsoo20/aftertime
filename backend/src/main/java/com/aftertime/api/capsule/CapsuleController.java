@@ -23,4 +23,16 @@ public class CapsuleController {
 
     @GetMapping("/{id}/open")
     public CapsuleDtos.Detail open(@PathVariable UUID id) { return service.open(id); }
+
+    @GetMapping("/{id}")
+    public CapsuleDtos.ManagementDetail detail(@PathVariable UUID id) { return service.findOne(id); }
+
+    @PutMapping("/{id}")
+    public CapsuleDtos.Summary update(@PathVariable UUID id, @Valid @RequestBody CapsuleDtos.UpdateRequest request) {
+        return service.update(id, request);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable UUID id) { service.delete(id); }
 }

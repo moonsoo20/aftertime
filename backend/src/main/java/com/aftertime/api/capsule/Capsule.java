@@ -42,4 +42,11 @@ public class Capsule {
     public Instant getUnlockAt() { return unlockAt; }
     public Instant getCreatedAt() { return createdAt; }
     public AppUser getOwner() { return owner; }
+
+    public void update(String title, String recipient, String message, Instant unlockAt) {
+        this.title = title;
+        this.recipient = recipient;
+        this.message = message;
+        this.unlockAt = unlockAt;
+    }
 }
