@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:h2:file:./data/aftertime;AUTO_SERVER=TRUE
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  jackson:
+    time-zone: UTC
+server:
+  port: ${PORT:8080}
+  error:
+    include-message: always

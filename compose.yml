@@ -1,0 +1,31 @@
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: aftertime
+      POSTGRES_USER: aftertime
+      POSTGRES_PASSWORD: aftertime-local
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U aftertime"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      DATABASE_URL: jdbc:postgresql://db:5432/aftertime
+      DATABASE_USERNAME: aftertime
+      DATABASE_PASSWORD: aftertime-local
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  postgres-data:
+

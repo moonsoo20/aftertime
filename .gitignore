@@ -1,0 +1,30 @@
+# IntelliJ
+.idea/
+*.iml
+
+# Java / Gradle
+.gradle/
+backend/build/
+backend/data/
+*.h2.db
+*.mv.db
+*.trace.db
+
+# React / Node
+frontend/node_modules/
+frontend/dist/
+frontend/*.tsbuildinfo
+frontend/vite.config.js
+frontend/vite.config.d.ts
+
+# Local runtime data and secrets
+data/
+.env
+.env.*
+!.env.example
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
